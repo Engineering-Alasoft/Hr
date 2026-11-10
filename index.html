@@ -8,6 +8,9 @@
     content="Northstar People Advisory supports ambitious businesses and professionals with thoughtful HR consulting, people operations, and career guidance.">
   <meta name="theme-color" content="#10243a">
   <title>Northstar People Advisory | People First. Progress Always.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
   <style>
     /* -------------------------------------------------------
        1. Brand tokens and accessible base styles
@@ -28,6 +31,7 @@
       --shadow: 0 24px 65px rgba(16, 36, 58, .10);
       --radius: 18px;
       --container: 1180px;
+      --font: "Poppins", system-ui, sans-serif;
     }
 
     *,
@@ -45,7 +49,7 @@
       margin: 0;
       background: var(--paper);
       color: var(--ink);
-      font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font: 16px/1.65 var(--font);
     }
 
     body.menu-open {
@@ -127,7 +131,7 @@
 
     h1,
     h2 {
-      font-family: Georgia, Cambria, "Times New Roman", serif;
+      font-family: var(--font);
       font-weight: 500;
     }
 
@@ -252,7 +256,7 @@
       border-radius: 11px;
       background: var(--navy);
       color: #d9eee8;
-      font: bold 28px Georgia, serif;
+      font: bold 28px var(--font);
     }
 
     .brand-name {
@@ -343,6 +347,15 @@
       gap: 72px;
     }
 
+    .hero-grid>*,
+    .about-grid>*,
+    .approach-grid>*,
+    .contact-grid>*,
+    .audience-card>span:nth-child(2),
+    .floating-note>span:last-child {
+      min-width: 0;
+    }
+
     .hero-copy h1 {
       margin: 21px 0 25px;
       max-width: 690px;
@@ -384,12 +397,15 @@
 
     .hero-art {
       position: relative;
-      min-height: 510px;
+      padding: 22px 16px 8px 10px;
     }
 
     .art-backdrop {
-      position: absolute;
-      inset: 33px 17px 15px 26px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 470px;
+      padding: 108px 64px 40px;
       background: var(--navy);
       border-radius: 190px 190px 18px 18px;
       overflow: hidden;
@@ -408,13 +424,11 @@
     }
 
     .art-quote {
-      position: absolute;
-      top: 105px;
-      left: 63px;
-      right: 65px;
+      position: relative;
       z-index: 2;
+      margin: 0;
       color: #fff;
-      font: 500 clamp(1.85rem, 2.9vw, 2.75rem)/1.23 Georgia, serif;
+      font: 500 clamp(1.7rem, 2.5vw, 2.75rem)/1.23 var(--font);
       letter-spacing: -.035em;
     }
 
@@ -423,10 +437,10 @@
     }
 
     .art-caption {
-      position: absolute;
-      top: 285px;
-      left: 65px;
+      position: relative;
       z-index: 2;
+      margin: 20px 0 36px;
+      max-width: 100%;
       color: #cbdbe2;
       font-size: .84rem;
       letter-spacing: .08em;
@@ -434,11 +448,10 @@
     }
 
     .art-lines {
-      position: absolute;
-      bottom: 50px;
-      left: 65px;
-      right: 65px;
+      position: relative;
+      z-index: 1;
       height: 90px;
+      margin-top: auto;
       display: flex;
       align-items: flex-end;
       gap: 11px;
@@ -483,12 +496,12 @@
     .floating-note {
       position: absolute;
       z-index: 3;
-      right: -15px;
-      bottom: 56px;
+      right: 0;
+      bottom: 36px;
       display: flex;
       align-items: center;
       gap: 14px;
-      width: 235px;
+      width: min(235px, calc(100% - 28px));
       padding: 18px;
       background: #fff;
       box-shadow: var(--shadow);
@@ -526,7 +539,7 @@
       top: 12px;
       right: 27px;
       color: var(--teal-dark);
-      font: 65px Georgia, serif;
+      font: 65px var(--font);
     }
 
     /* -------------------------------------------------------
@@ -639,7 +652,7 @@
 
     .value-number {
       color: #62988e;
-      font: italic 1.5rem Georgia, serif;
+      font: italic 1.5rem var(--font);
     }
 
     .value-card h3 {
@@ -788,7 +801,7 @@
       border: 1px solid #aecdc5;
       border-radius: 50%;
       color: var(--teal-dark);
-      font: 1.2rem Georgia, serif;
+      font: 1.2rem var(--font);
     }
 
     .step h3 {
@@ -946,7 +959,7 @@
 
     .field input::placeholder,
     .field textarea::placeholder {
-      color: #8c9aa5;
+      color: #5e6d7a;
     }
 
     .submit-row {
@@ -957,8 +970,8 @@
     }
 
     .form-note {
-      color: #788794;
-      font-size: .76rem;
+      color: #3e4e5c;
+      font-size: .8rem;
       line-height: 1.5;
     }
 
@@ -1044,28 +1057,16 @@
         gap: 19px;
       }
 
-      .hero-grid {
-        gap: 35px;
-      }
-
-      .hero-art {
-        min-height: 460px;
-      }
-
-      .art-quote {
-        left: 48px;
-        right: 35px;
-      }
-
-      .art-caption,
-      .art-lines {
-        left: 48px;
-      }
-
+      .hero-grid,
       .about-grid,
       .approach-grid,
       .contact-grid {
-        gap: 55px;
+        gap: 40px;
+      }
+
+      .art-backdrop {
+        min-height: 440px;
+        padding: 92px 48px 36px;
       }
 
       .services-grid {
@@ -1073,7 +1074,7 @@
       }
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 900px) {
       html {
         scroll-padding-top: 78px;
       }
@@ -1101,13 +1102,13 @@
         top: 74px;
         left: 0;
         right: 0;
-        padding: 21px 24px 27px;
+        padding: 12px 24px 20px;
         background: var(--paper);
         border-bottom: 1px solid var(--line);
         box-shadow: 0 20px 28px rgba(16, 36, 58, .1);
         flex-direction: column;
         align-items: stretch;
-        gap: 16px;
+        gap: 4px;
       }
 
       .nav-links.is-open {
@@ -1115,11 +1116,15 @@
       }
 
       .nav-links>a:not(.button) {
-        padding: 6px 0;
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 8px 0;
       }
 
       .nav-links .button {
-        align-self: flex-start;
+        width: 100%;
+        margin-top: 8px;
       }
 
       .menu-toggle[aria-expanded="true"] span:nth-child(1) {
@@ -1135,58 +1140,42 @@
       }
 
       .hero {
-        padding: 67px 0 90px;
+        padding: 64px 0 84px;
       }
 
       .hero-grid,
       .about-grid,
       .approach-grid,
-      .contact-grid {
+      .contact-grid,
+      .audience-grid {
         grid-template-columns: 1fr;
-        gap: 43px;
+        gap: 36px;
       }
 
       .hero-copy h1 {
-        max-width: 550px;
+        max-width: 14em;
       }
 
       .hero-art {
-        min-height: 425px;
-        max-width: 510px;
         width: 100%;
+        max-width: 560px;
         margin: 0 auto;
+        padding: 16px 8px 4px;
       }
 
       .art-backdrop {
-        inset: 12px 26px 10px;
-      }
-
-      .art-quote {
-        top: 76px;
-        left: 62px;
-        right: 60px;
-      }
-
-      .art-caption {
-        top: 230px;
-        left: 62px;
-      }
-
-      .art-lines {
-        left: 62px;
+        min-height: 420px;
+        padding: 84px 40px 32px;
+        border-radius: 160px 160px 16px 16px;
       }
 
       .floating-note {
-        right: 0;
-        bottom: 36px;
+        right: 8px;
+        bottom: 28px;
       }
 
       .audience-strip {
-        margin-top: -27px;
-      }
-
-      .audience-grid {
-        grid-template-columns: 1fr;
+        margin-top: -24px;
       }
 
       .audience-card {
@@ -1208,7 +1197,7 @@
 
       .services-head>p {
         max-width: none;
-        margin: -25px 0 35px;
+        margin: 0 0 32px;
       }
 
       .approach-intro {
@@ -1230,49 +1219,59 @@
       }
     }
 
+    @media (max-width: 680px) {
+      .services-grid,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        gap: 0;
+      }
+
+      .service-card {
+        min-height: auto;
+      }
+    }
+
     @media (max-width: 480px) {
       h1 {
-        font-size: clamp(2.65rem, 11.5vw, 3.45rem);
+        font-size: clamp(2.35rem, 10vw, 3.1rem);
       }
 
       .lead {
         font-size: 1rem;
       }
 
-      .hero-art {
-        min-height: 370px;
+      .hero {
+        padding: 48px 0 64px;
       }
 
       .art-backdrop {
-        inset: 10px 12px;
-        border-radius: 145px 145px 15px 15px;
+        min-height: 360px;
+        padding: 68px 24px 24px;
+        border-radius: 120px 120px 14px 14px;
       }
 
       .art-quote {
-        top: 75px;
-        left: 35px;
-        right: 35px;
-        font-size: 1.85rem;
+        font-size: clamp(1.45rem, 6.4vw, 1.8rem);
       }
 
       .art-caption {
-        top: 216px;
-        left: 35px;
-        font-size: .68rem;
+        margin-bottom: 24px;
+        font-size: .72rem;
+        letter-spacing: .05em;
       }
 
       .art-lines {
-        left: 35px;
-        right: 35px;
-        bottom: 40px;
-        height: 70px;
+        height: 64px;
       }
 
       .floating-note {
-        width: 195px;
-        padding: 13px;
-        bottom: 17px;
-        right: -3px;
+        width: min(200px, calc(100% - 20px));
+        padding: 12px;
+        right: 4px;
+        bottom: 14px;
       }
 
       .floating-note .note-icon {
@@ -1280,21 +1279,13 @@
         height: 35px;
       }
 
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .service-card {
-        min-height: auto;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
+      .shape-star {
+        font-size: 42px;
+        right: 8px;
       }
 
       .contact-form {
-        padding: 22px;
+        padding: 22px 18px;
       }
 
       .value-card {
@@ -1312,6 +1303,13 @@
 
       .footer-links {
         flex-direction: column;
+        gap: 4px;
+      }
+
+      .footer-links a {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
       }
     }
 
@@ -1583,7 +1581,7 @@
                 href="mailto:hello@northstarpeople.example">hello@northstarpeople.example</a></div>
           </div>
           <div class="contact-detail"><span class="detail-icon" aria-hidden="true">☎</span>
-            <div><strong>Call us</strong><span>+1 (555) 010-2468</span></div>
+            <div><strong>Call us</strong><span>+1 (555) 010-0000</span></div>
           </div>
           <div class="contact-detail"><span class="detail-icon" aria-hidden="true">◷</span>
             <div><strong>Office hours</strong><span>Monday to Friday, 9:00 AM to 5:00 PM</span></div>
@@ -1620,8 +1618,7 @@
           <div class="field"><label for="message">How can we help? *</label><textarea id="message" name="message"
               placeholder="Share a little about your goals or challenges" required maxlength="3000"></textarea></div>
           <div class="submit-row"><button type="submit" class="button button-primary">Prepare email inquiry <span
-                aria-hidden="true">↗</span></button><span class="form-note">Your email app will open with the details
-              filled in.</span></div>
+                aria-hidden="true">↗</span></button><span class="form-note">Your email app will open with the details filled in. Please leave out confidential employee information.</span></div>
           <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
         </form>
       </div>
@@ -1672,7 +1669,7 @@
       });
       nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
       document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
-      window.addEventListener('resize', () => { if (window.innerWidth > 760) closeMenu(); });
+      window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
 
       // Selecting a service fills the corresponding contact field for convenience.
       document.querySelectorAll('[data-service]').forEach(link => {
